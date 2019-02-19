@@ -10,7 +10,7 @@
     <title>Movies</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-
+   
 </head>
 	<body>
 	    <header>
@@ -33,5 +33,6 @@
 			</nav>
 		</header>
      	<section id="section">
+     		<div class="wrap">
 
     

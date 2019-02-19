@@ -20,3 +20,7 @@ foreach($films as $film){
 }
 ?>
 <a href="">Plus de films !</a>
+
+
+<?php
+include ('inc/footer.php');
