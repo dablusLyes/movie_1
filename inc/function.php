@@ -13,19 +13,8 @@ function abort404(){ header('location: 404.php'); exit(); }
 function abort403(){ header('location: 403.php'); exit(); }
 
 
-// =====================================================================================//
-// 					Checks and returns if input is numeric and integer 
-
-function isInteger($input){ return(ctype_digit(strval($input))); } 
-
-// =====================================================================================//
-// 							Convert english to french date format
-
-function convertDate($date){
-	$timeStamp = strtotime($date);
-	return date('d/m/Y H:i', $timeStamp);}
-
-/**
+// =====================================================================================//		
+/*
  * isInteger()
  * Checks and returns if input is numeric and integer
  * @param string $input
@@ -182,8 +171,3 @@ function isAdmin(){
 	}
 	return false;
 }
-
-// Hash a password
-function hashPassword($password){
-	$password = password_hash($password , PASSWORD_DEFAULT);
-	return $password;}
