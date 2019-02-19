@@ -21,12 +21,13 @@ if(!empty($_GET['id']) && is_numeric($_GET['id'])){
     <li> <?php echo $film['title'] ?> </li>
     <li> year of sortie<?php echo $film['year'] ?> </li>
     <li> rating : <?php echo $film['rating'] ?>/100</li>
-    <li> <?php echo $film[''] ?> </li>
-    <li> <?php echo $film[''] ?> </li>
-    <li> <?php echo $film[''] ?> </li>
-    <li> <?php echo $film[''] ?> </li>
-    <li> <?php echo $film[''] ?> </li>
-    
+    <li> <?php echo $film['genres'] ?> </li>
+    <li> <?php echo $film['plot'] ?> </li>
+    <li> <?php echo $film['directors'] ?> </li>
+    <li> <?php echo $film['cast'] ?> </li>
+    <li> <?php echo $film['writers'] ?> </li>
+    <li> <?php echo $film['popularity'] ?> </li>
+
 </ul>
 
 
