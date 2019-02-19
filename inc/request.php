@@ -28,17 +28,10 @@ function getRandomMovies(){
       $sql = "SELECT * FROM movies_full
                 ORDER BY RAND()
                 LIMIT 10 ";
-<<<<<<< HEAD
       $query = $pdo->prepare($sql);
       $query->execute();
 
       return $query->fetchALL();
-=======
-        $query = $pdo->prepare($sql);
-        $query->execute();
-        $table = $query->fetchALL();
-        return $table;
->>>>>>> 66230381a381e1319129a8effcc32a22f46d4e9b
     }
 
 // ===================================================================================//
@@ -61,7 +54,6 @@ function getAllMovies(){
 function getSingleFilm($slug){
   global $pdo;
 
-<<<<<<< HEAD
   $sql = "SELECT * FROM movies_full WHERE slug=:slug";
 
   $query = $pdo->prepare($sql);
@@ -70,23 +62,12 @@ function getSingleFilm($slug){
 
 
   return $query->fetch();
-=======
-    $sql = "SELECT * 
-            FROM movies_full 
-            WHERE slug=:slug";
-    $query = $pdo->prepare($sql);
-    $query->bindvalue(':slug',$slug);
-    $query->execute();
-    $output = $query->fetch();
-    return $output;
->>>>>>> 66230381a381e1319129a8effcc32a22f46d4e9b
 }
 
 // ===================================================================================//
 //                        Checks and returns if user exists in database
 
 function getUser($login){
-    global $pdo;
 	$sql = "SELECT * FROM users
 	   		WHERE pseudo = :login
 	   		OR email = :login";
@@ -94,8 +75,6 @@ function getUser($login){
     $query->bindValue(':login',$login,PDO::PARAM_STR);
     $query->execute();
     $user = $query->fetch();
-
-    return $user;
 }
 
 // ===================================================================================//
