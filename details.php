@@ -4,10 +4,10 @@ include('inc/pdo.php');
 include('inc/request.php');
 
 
-if(!empty($_GET['id']) && is_numeric($_GET['id'])){
-    $id = $_GET['id'];
+if(!empty($_GET['slug'])){
+    $slug = $_GET['slug'];
 
-   $film = getSingleFilm($id);
+   $film = getSingleFilm($slug);
 
 }else{
     die('404');

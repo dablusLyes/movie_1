@@ -33,12 +33,12 @@ function getRandomMovies(){
     }
 //======================================================================================
 //==================Displays the details of the clicked film on details.php
-function getSingleFilm($id){
+function getSingleFilm($slug){
     global $pdo;
 
-    $sql = "SELECT * FROM movies_full WHERE id=:id";
+    $sql = "SELECT * FROM movies_full WHERE slug=:slug";
     $query = $pdo->prepare($sql);
-    $query->bindvalue(':id',$id,PDO::PARAM_INT);
+    $query->bindvalue(':slug',$slug);
     $query->execute();
     $output = $query->fetch();
     return $output;
