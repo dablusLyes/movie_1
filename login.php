@@ -15,12 +15,13 @@ if (!empty($_POST['submitted'])) {
     $errors['login'] = 'Veuillez renseignez les deux champs pour vous connectez';
   }
   if (count($errors) == 0) {
-    // checks if user exist in database
-    $user = getUser($id);
+
+    $user = getUser($login); // checking if user exist in database
+    debug($user);
 
     if (!empty($user)) {
       if (password_verify($password,$user['password'])) {
-        //   tout est verifié, creation de la session user
+        // Everything's right => feed the Session with user info
         $_SESSION['user'] = array(
           'id' => $user['id'],
           'email' => $user['email'],
@@ -30,11 +31,12 @@ if (!empty($_POST['submitted'])) {
         );
         header('Location: index.php');
         exit;
+
       } else {
-        $errors['login'] = 'Erreur de connexion';
+        $errors['login'] = 'Login and password do not match';
       }
     } else {
-      $errors['login'] = 'Erreur de connexion';
+      $errors['login'] = 'Unknown user';
     }
   }
 }
