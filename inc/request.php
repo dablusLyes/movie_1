@@ -1,7 +1,7 @@
 <?php
 require 'pdo.php';
 
-// ================================== SQL REQUEST ====================================//
+// ================================== SQL REQUESTS ====================================//
 
 
 // ===================================================================================//
@@ -20,19 +20,21 @@ function addNewUser($pseudo,$email,$password, $token){
 }
 
 // ===================================================================================//
-// =================================get 10 random movies from the DB							
+// 							Gets 10 random movies from the DB		
+
 function getRandomMovies(){
-        global $pdo;
-        $sql = "SELECT * FROM movies_full 
-                ORDER BY RAND() 
-                LIMIT 10 ";
-            $query = $pdo->prepare($sql);
-            $query->execute();
-   $table = $query->fetchALL();
-        return $table;
-    }
-//======================================================================================
-//==================Displays the details of the clicked film on details.php
+    global $pdo;
+    $sql = "SELECT * FROM movies_full 
+            ORDER BY RAND() 
+            LIMIT 10 ";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+   	$table = $query->fetchALL();
+    return $table;
+}
+// ===================================================================================//
+//					Displays the details of the clicked film on details.php
+
 function getSingleFilm($id){
     global $pdo;
 
@@ -43,3 +45,19 @@ function getSingleFilm($id){
     $output = $query->fetch();
     return $output;
 }
+
+// ===================================================================================//
+//                        Checks and returns if user exists in database
+
+function getUser($login){
+	$sql = "SELECT * FROM users
+	   		WHERE pseudo = :login 
+	   		OR email = :login";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':login',$login,PDO::PARAM_STR);
+    $query->execute();
+    $user = $query->fetch();
+}
+
+// ===================================================================================//
+//                         
