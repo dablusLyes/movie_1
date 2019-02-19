@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'pdo.php';
 
 //======================================== FUNCTIONS ===================================//
@@ -12,6 +12,7 @@ function debug($array){echo '<pre>'; print_r($array); echo '</pre>';}
 function abort404(){ header('location: 404.php'); exit(); }
 function abort403(){ header('location: 403.php'); exit(); }
 
+
 // =====================================================================================//
 // 					Checks and returns if input is numeric and integer 
 
@@ -24,6 +25,25 @@ function convertDate($date){
 	$timeStamp = strtotime($date);
 	return date('d/m/Y H:i', $timeStamp);}
 
+/**
+ * isInteger()
+ * Checks and returns if input is numeric and integer
+ * @param string $input
+ * @return int
+ */
+function isInteger($input)
+{
+	return(ctype_digit(strval($input)));
+}
+
+// =====================================================================================//
+// Convert english to french date format
+function convertDate($date)
+{
+	$timeStamp = strtotime($date);
+	return date('d/m/Y H:i', $timeStamp);
+}
+
 // =====================================================================================//
 // 									Text input validation
 
@@ -31,7 +51,7 @@ function validTextInput($errors,$input,$key,$min,$max){
 
 	if (!empty($input)) {
 		if (mb_strlen($input) < $min) {
-			$errors[$key] = 'Veuillez renseigner au moins ' . $min . ' caractères'; 
+			$errors[$key] = 'Veuillez renseigner au moins ' . $min . ' caractères';
 		} elseif(mb_strlen($input) > $max) {
 			$errors[$key] = 'Veuillez renseigner moins de ' . $max . ' caractères';
 		}
@@ -47,7 +67,7 @@ function validPseudo($errors,$input,$key,$min,$max){
 	global $pdo;
 	if (!empty($input)) {
 		if (mb_strlen($input) < $min) {
-			$errors[$key] = 'Veuillez renseigner au moins ' . $min . ' caractères'; 
+			$errors[$key] = 'Veuillez renseigner au moins ' . $min . ' caractères';
 		} elseif(mb_strlen($input) > $max) {
 			$errors[$key] = 'Veuillez renseigner moins de ' . $max . ' caractères';
 		} else {
@@ -57,7 +77,7 @@ function validPseudo($errors,$input,$key,$min,$max){
 			$query->bindValue(':input',$input, PDO::PARAM_STR);
 			$query->execute();
 			$pseudo = $query->fetch();
-			
+
 			if (!empty($pseudo)) {
 				$errors[$key] = 'Ce pseudo existe déjà, veuillez en choisir un autre';
 			}
@@ -83,12 +103,12 @@ function validRegisterEmail($errors, $email, $key){
 			$query->bindValue(':email',$email, PDO::PARAM_STR);
 			$query->execute();
 			$email2 = $query->fetch();
-			
+
 			if (!empty($email2)) {
 				$errors[$key] = 'Cet email est déjà utilisé, veuillez en choisir un autre';
 			}
 		}
-	} else { 
+	} else {
 		$errors[$key] = 'Veuillez renseigner votre email';
 	}
 	return $errors;}
@@ -100,10 +120,10 @@ function validPassword($errors,$input,$input2,$key,$min,$max){
 
 	if (!empty($input)) {
 		if (mb_strlen($input) < $min) {
-			$errors[$key] = 'Le mot de passe doit faire au moins ' . $min . ' caractères'; 
+			$errors[$key] = 'Le mot de passe doit faire au moins ' . $min . ' caractères';
 		} elseif(mb_strlen($input) > $max) {
 			$errors[$key] = 'Le mot de passe doit faire moins de ' . $max . ' caractères';
-		} else { 
+		} else {
 			if ( $input != $input2) {
 				$errors[$key] = 'Les mots de passe ne correspondent pas';
 			}
@@ -114,12 +134,16 @@ function validPassword($errors,$input,$input2,$key,$min,$max){
 	return $errors;}
 
 // =====================================================================================//
+
 // 									Generates a token 
+
+// Generates a token
 function generateToken($lengh){
 	$token = bin2hex(random_bytes($lengh));
 	return $token;}
 
 // =====================================================================================//
+
 //									 Hash a password 
 function hashPassword($password){
 	$password = password_hash($password , PASSWORD_DEFAULT);
@@ -158,3 +182,8 @@ function isAdmin(){
 	}
 	return false;
 }
+
+// Hash a password
+function hashPassword($password){
+	$password = password_hash($password , PASSWORD_DEFAULT);
+	return $password;}

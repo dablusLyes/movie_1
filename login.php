@@ -1,8 +1,9 @@
-<?php 
+<?php
 session_start();
-include('inc/request.php'); 
+include('inc/request.php');
 include('inc/pdo.php');
 require 'inc/function.php';
+
 
 
 $errors = [];
@@ -55,6 +56,6 @@ if (!empty($_POST['submitted'])) {
 <input type="submit" name="submitted" value="Connexion">
 </form>
 
-<a href="forgetpassword.php">Mot de passe oublié</a>
+<a href="forgetpassword.php">cliquez ici pour reinitialiser le mot de passe</a>
 
 <?php include('inc/footer.php');
