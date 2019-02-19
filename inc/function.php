@@ -7,6 +7,11 @@ require 'pdo.php';
 function debug($array){echo '<pre>'; print_r($array); echo '</pre>';}
 
 // =====================================================================================//
+// Errors redirection 404,403, etc...
+function abort404(){ header('location: 404.php'); exit(); }
+function abort403(){ header('location: 403.php'); exit(); }
+
+// =====================================================================================//
 // Checks and returns if input is numeric and integer 
 function isInteger($input){ return(ctype_digit(strval($input))); } 
 
@@ -32,7 +37,7 @@ function validTextInput($errors,$input,$key,$min,$max){
 	return $errors;}
 
 // =====================================================================================//
-// Input validation for pseudo ( requires pdo)
+// Input validation for pseudo (requires pdo)
 function validPseudo($errors,$input,$key,$min,$max){
 	global $pdo;
 	if (!empty($input)) {
