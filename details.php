@@ -9,6 +9,12 @@ if(!empty($_GET['slug'])){
 
    $film = getSingleFilm($slug);
 
+   if(!empty($film)) {
+
+   } else {
+     die('404');
+   }
+
 }else{
     die('404');
 }
@@ -29,7 +35,3 @@ if(!empty($_GET['slug'])){
     <li> <?php echo $film['popularity'] ?> </li>
 
 </ul>
-
-
-
-
