@@ -1,14 +1,12 @@
 <?php
+session_start();
 include('inc/function.php');
 include('inc/pdo.php');
 include('inc/request.php');
 
 $films = getRandomMovies();
 
-
 include('inc/header.php');
-
-
 
 foreach($films as $film){
 ?>
@@ -22,3 +20,7 @@ foreach($films as $film){
 }
 ?>
 <a href="">Plus de films !</a>
+
+
+<?php
+include ('inc/footer.php');

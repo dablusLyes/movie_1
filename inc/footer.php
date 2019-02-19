@@ -1,10 +1,7 @@
-<div>    <!--fin section -->
-<footer id="footer">     <!--debut footer-->
-
-
-
-</footer>                  <!--fin footer -->
-
-
-</body>
+			</div>
+		</section>  
+		<footer>    
+			<p>Group1 2019 &copy; All Rights Reserved</p>
+		</footer> 
+	</body>
 </html>

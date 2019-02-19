@@ -7,12 +7,14 @@ require 'pdo.php';
 function debug($array){echo '<pre>'; print_r($array); echo '</pre>';}
 
 // =====================================================================================//
-// Errors redirection 404,403, etc...
+// 							Errors redirection 404,403, etc...
+
 function abort404(){ header('location: 404.php'); exit(); }
 function abort403(){ header('location: 403.php'); exit(); }
 
 
-/**
+// =====================================================================================//		
+/*
  * isInteger()
  * Checks and returns if input is numeric and integer
  * @param string $input
@@ -32,7 +34,8 @@ function convertDate($date)
 }
 
 // =====================================================================================//
-// Text input validation
+// 									Text input validation
+
 function validTextInput($errors,$input,$key,$min,$max){
 
 	if (!empty($input)) {
@@ -47,7 +50,8 @@ function validTextInput($errors,$input,$key,$min,$max){
 	return $errors;}
 
 // =====================================================================================//
-// Input validation for pseudo (requires pdo)
+// 						Input validation for pseudo (requires pdo)
+
 function validPseudo($errors,$input,$key,$min,$max){
 	global $pdo;
 	if (!empty($input)) {
@@ -73,7 +77,8 @@ function validPseudo($errors,$input,$key,$min,$max){
 	return $errors;}
 
 // =====================================================================================//
-// Email input validation ( requires pdo )
+// 						Email input validation ( requires pdo )
+
 function validRegisterEmail($errors, $email, $key){
 	global $pdo;
 	if (!empty($email)) {
@@ -98,7 +103,8 @@ function validRegisterEmail($errors, $email, $key){
 	return $errors;}
 
 // =====================================================================================//
-// Password input validation
+// 								Password input validation
+
 function validPassword($errors,$input,$input2,$key,$min,$max){
 
 	if (!empty($input)) {
@@ -117,13 +123,51 @@ function validPassword($errors,$input,$input2,$key,$min,$max){
 	return $errors;}
 
 // =====================================================================================//
+
+// 									Generates a token 
+
 // Generates a token
 function generateToken($lengh){
 	$token = bin2hex(random_bytes($lengh));
 	return $token;}
 
 // =====================================================================================//
-// Hash a password
+
+//									 Hash a password 
 function hashPassword($password){
 	$password = password_hash($password , PASSWORD_DEFAULT);
 	return $password;}
+
+// =====================================================================================//
+//								 Checks if a user is logged
+
+function isLogged(){
+	if (!empty($_SESSION['user']['id'])) {
+		if (is_numeric($_SESSION['user']['id'])) {
+			if (!empty($_SESSION['user']['pseudo'])) {
+				if (!empty($_SESSION['user']['email'])) {
+					if (!empty($_SESSION['user']['role'])) {
+						if (!empty($_SESSION['user']['ip'])) {
+							if ($_SESSION['user']['ip'] == $_SERVER['REMOTE_ADDR']) {
+							return true;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+// =====================================================================================//
+//								Checks if a user is an admin
+
+function isAdmin(){
+	if (isLogged()) {
+		if ($_SESSION['user']['role'] == 'admin') {
+			return true;
+		}
+	}
+	return false;
+}
