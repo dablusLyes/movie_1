@@ -27,9 +27,9 @@ function getRandomMovies(){
         $sql = "SELECT * FROM movies_full 
                 ORDER BY RAND() 
                 LIMIT 10 ";
-            $query = $pdo->prepare($sql);
-            $query->execute();
-   $table = $query->fetchALL();
+        $query = $pdo->prepare($sql);
+        $query->execute();
+        $table = $query->fetchALL();
         return $table;
     }
 //======================================================================================
@@ -37,7 +37,9 @@ function getRandomMovies(){
 function getSingleFilm($slug){
     global $pdo;
 
-    $sql = "SELECT * FROM movies_full WHERE slug=:slug";
+    $sql = "SELECT * 
+            FROM movies_full 
+            WHERE slug=:slug";
     $query = $pdo->prepare($sql);
     $query->bindvalue(':slug',$slug);
     $query->execute();
