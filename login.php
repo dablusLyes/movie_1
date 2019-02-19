@@ -16,15 +16,10 @@ if (!empty($_POST['submitted'])) {
     $errors['login'] = 'Veuillez renseignez les deux champs pour vous connectez';
   }
   if (count($errors) == 0) {
-    // verrifier si il existe un user avec ce mail ou ce pseudo => login
-    $sql = "SELECT * FROM users WHERE pseudo = :login OR email = :login";
-    $query = $pdo->prepare($sql);
-    $query->bindValue(':login',$login,PDO::PARAM_STR);
-    $query->execute();
-    $user = $query->fetch();
+    // checks if user exist in database
+    $user = getUser($id);
 
     if (!empty($user)) {
-
       if (password_verify($password,$user['password'])) {
         //   tout est verifié, creation de la session user
         $_SESSION['user'] = array(
