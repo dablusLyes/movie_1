@@ -51,6 +51,7 @@ function getSingleFilm($slug){
 //                        Checks and returns if user exists in database
 
 function getUser($login){
+    global $pdo;
 	$sql = "SELECT * FROM users
 	   		WHERE pseudo = :login 
 	   		OR email = :login";
@@ -58,6 +59,8 @@ function getUser($login){
     $query->bindValue(':login',$login,PDO::PARAM_STR);
     $query->execute();
     $user = $query->fetch();
+
+    return $user;
 }
 
 // ===================================================================================//
