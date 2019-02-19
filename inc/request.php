@@ -9,7 +9,7 @@ require 'pdo.php';
 
 function addNewUser($pseudo,$email,$password, $token){
 	global $pdo;
-	$sql = "INSERT INTO users (pseudo,email,password,created_at,token) 
+	$sql = "INSERT INTO users (pseudo,email,password,created_at,token)
 			VALUES (:pseudo,:email,:password,NOW(),'$token')";
 		$query = $pdo->prepare($sql);
 		// SQL injection =>
@@ -20,48 +20,62 @@ function addNewUser($pseudo,$email,$password, $token){
 }
 
 // ===================================================================================//
-// 							Gets 10 random movies from the DB		
+// 							Gets 10 random movies from the DB
 
 function getRandomMovies(){
-        global $pdo;
-        $sql = "SELECT * FROM movies_full 
-                ORDER BY RAND() 
+      global $pdo;
+
+      $sql = "SELECT * FROM movies_full
+                ORDER BY RAND()
                 LIMIT 10 ";
-        $query = $pdo->prepare($sql);
-        $query->execute();
-        $table = $query->fetchALL();
-        return $table;
+      $query = $pdo->prepare($sql);
+      $query->execute();
+
+      return $query->fetchALL();
     }
+
+// ===================================================================================//
+// 							Get allartikal get all movies from DB limit by 25
+
+function getAllMovies(){
+      global $pdo;
+
+      $sql = "SELECT * FROM movies_full
+                ORDER BY id ASC
+                LIMIT 25";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+
+      return $query->fetchALL();
+}
+
 //======================================================================================
 //==================Displays the details of the clicked film on details.php
 function getSingleFilm($slug){
-    global $pdo;
+  global $pdo;
 
-    $sql = "SELECT * 
-            FROM movies_full 
-            WHERE slug=:slug";
-    $query = $pdo->prepare($sql);
-    $query->bindvalue(':slug',$slug);
-    $query->execute();
-    $output = $query->fetch();
-    return $output;
+  $sql = "SELECT * FROM movies_full WHERE slug=:slug";
+
+  $query = $pdo->prepare($sql);
+  $query->bindvalue(':slug',$slug);
+  $query->execute();
+
+
+  return $query->fetch();
 }
 
 // ===================================================================================//
 //                        Checks and returns if user exists in database
 
 function getUser($login){
-    global $pdo;
 	$sql = "SELECT * FROM users
-	   		WHERE pseudo = :login 
+	   		WHERE pseudo = :login
 	   		OR email = :login";
     $query = $pdo->prepare($sql);
     $query->bindValue(':login',$login,PDO::PARAM_STR);
     $query->execute();
     $user = $query->fetch();
-
-    return $user;
 }
 
 // ===================================================================================//
-//                         
+//

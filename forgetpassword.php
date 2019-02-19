@@ -23,8 +23,7 @@ if (!empty($_POST['submitted'])) {
       $html = '<p>Veuillez cliquer sur le lien ci-dessous</p>';
       $html .= '<p><a href="'.$url.'">Cliquer ici pour modifier ton mot de passe</a></p>';
 
-      echo $html;
-      die('Attention normalement on doit encoyer le lien par mail');
+    
 
     }else {
       $errors['email'] = 'Ne marche pas';

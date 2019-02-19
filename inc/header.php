@@ -9,7 +9,7 @@
     <title>Movies</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-
+   
 </head>
 	<body>
 	    <header>
@@ -24,6 +24,10 @@
 						echo '<li><a href="logout.php">Logout</a></li>';
 						echo '<li><p>Bonjour <span>' . $_SESSION['user']['pseudo'] . '</span></p></li>';
 					}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 68d6fd01f78b667c6264b19ede6b40023376f02d
 					if (isAdmin()) {
 						echo '<li><a href="admin/index.php">Back office</a></li>';
 					} ?>	
@@ -31,6 +35,10 @@
 			</nav>
 		</header>
      	<section id="section">
+<<<<<<< HEAD
 
+=======
+     		<div class="wrap">
+>>>>>>> 68d6fd01f78b667c6264b19ede6b40023376f02d
 
     
