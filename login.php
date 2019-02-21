@@ -44,11 +44,12 @@ if (!empty($_POST['submitted'])) {
 
  include('inc/header.php'); ?>
 
-<form action="" method="post">
-  <label for="login">Votre pseudo ou email *</label>
-  <input type="text" id="login" name="login" value="<?php if (!empty($_POST['login'])) { echo $_POST['login']; } ?>" placeholder="Pseudo ou email ici...">
+<form class="login" action="" method="post">
+  <label for="login">Email or Pseudo *</label>
+  <input type="text" id="login" name="login" value="<?php if (!empty($_POST['login'])) { echo $_POST['login']; } ?>" placeholder="Email or Pseudo">
   <span class="error"><?php if (!empty($errors['login'])) { echo $errors['login']; } ?></span>
 
+<<<<<<< HEAD
   <label for="password">Merci de rentrer ici Votre mot de passe *</label>
   <input type="password" id="password" name="password" value="" placeholder="Votre mot de passe ex: Le mot de passe">
   <span class="error"><?php if (!empty($errors['password'])) { echo $errors['password']; } ?></span>
@@ -56,8 +57,16 @@ if (!empty($_POST['submitted'])) {
   
 
 <input type="submit" name="submitted" value="Connexion">
+=======
+  <label for="password">Votre mot de passe *</label>
+  <input type="password" id="password" name="password" value="" placeholder="Password">
+  <a href="forgetpassword.php">Reset password</a>
+  <span class="error"><?php if (!empty($errors['password'])) { echo $errors['password']; } ?></span>
+
+<input type="submit" name="submitted" value="Log in">
+>>>>>>> 0e1113ad9e7545433d9a23f71374c79a92d45eb5
 </form>
 
-<a href="forgetpassword.php">cliquez ici pour reinitialiser le mot de passe</a>
+
 
 <?php include('inc/footer.php');
