@@ -15,12 +15,12 @@ if(!empty($_POST['submit'])){
         $check = $_POST['genre'];
         //debug($check);
         foreach ($check as $b) {
-            $sql.= $z ." genres LIKE '%".$b."%' ";
+            $sql.= ' '.$z ." genres LIKE '%".$b."%' ";
             //echo $sql;   
             $z = 'OR';        
          }
-         $sql.= " AND year BETWEEN $x AND $y";
-         //echo $sql;
+        $sql.= " AND year BETWEEN $x AND $y";
+        echo $sql;
         $query = $pdo->prepare($sql);
         $query->execute();
         $results = $query->fetchALL();
@@ -33,12 +33,9 @@ if(!empty($_POST['submit'])){
 include('inc/header.php');
 foreach ($results as $result) {
    ?>
-
-    <a href="details.php?slug=<?php echo $result['slug']; ?>"> <img src="<?php echo poster($result); ?>" alt="<?php echo $film['title'] ?>"></a>
+    <img src="<?php echo poster($result); ?>" alt="<?php echo $result['title'] ?>">
     <p> <?php echo $result['title'] ?> </p>
     <p> year of sortie<?php echo $result['year'] ?> </p>
     <p> rating : <?php echo $result['rating'] ?>/100</p>
-
-
    <?php
 }

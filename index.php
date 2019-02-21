@@ -53,7 +53,7 @@ include('inc/header.php'); ?>
 
     <label for="year2">and</label>
     <select name="year2" id="year">
-    <?php for ($i = 1900; $i < 2020; $i++) { ?><option value="<?php echo $i; ?>"><?php echo $i; ?></option><?php }  ?>
+    <?php for ($i = 1900; $i < 2020; $i++) { ?><option selected="selected" value="<?php echo $i; ?>"><?php echo $i; ?></option><?php }  ?>
     </select>
     <input type="submit" name="submit" value="search">
 </form>
