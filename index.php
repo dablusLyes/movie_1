@@ -55,6 +55,9 @@ include('inc/header.php'); ?>
     <select name="year2" id="year">
     <?php for ($i = 1900; $i <= 2020; $i+=10) { ?><option selected="selected" value="<?php echo $i; ?>"><?php echo $i; ?></option><?php }  ?>
     </select>
+    <label for="note">with a note of</label>
+    <input type="number" name ="note">
+
     <input type="submit" name="submit" value="search">
 </form>
 
