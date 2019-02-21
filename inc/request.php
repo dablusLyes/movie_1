@@ -37,12 +37,12 @@ function getRandomMovies($count = 10){
 // ===================================================================================//
 // 							Get allartikal get all movies from DB limit by 25
 
-function getAllMovies(){
+function getAllMoviesLimitBy($limit = 25){
       global $pdo;
 
       $sql = "SELECT * FROM movies_full
                 ORDER BY id ASC
-                LIMIT 25";
+                LIMIT $limit";
       $query = $pdo->prepare($sql);
       $query->execute();
 
