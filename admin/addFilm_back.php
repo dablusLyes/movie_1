@@ -155,7 +155,6 @@
 </div>
 </form>
 </div>
-</div>
 <div class="col-lg-6">
 <div class="product-edt-remove">
 <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Remove
