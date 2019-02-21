@@ -5,7 +5,6 @@ include('inc/pdo.php');
 require 'inc/function.php';
 
 
-
 $errors = [];
 
 if (!empty($_POST['submitted'])) {
@@ -16,6 +15,7 @@ if (!empty($_POST['submitted'])) {
     $errors['login'] = 'Veuillez renseignez les deux champs pour vous connectez';
   }
   if (count($errors) == 0) {
+
 
     $user = getUser($login); // checking if user exist in database
     debug($user);
@@ -49,9 +49,11 @@ if (!empty($_POST['submitted'])) {
   <input type="text" id="login" name="login" value="<?php if (!empty($_POST['login'])) { echo $_POST['login']; } ?>" placeholder="Pseudo ou email ici...">
   <span class="error"><?php if (!empty($errors['login'])) { echo $errors['login']; } ?></span>
 
-  <label for="password">Votre mot de passe *</label>
+  <label for="password">Merci de rentrer ici Votre mot de passe *</label>
   <input type="password" id="password" name="password" value="" placeholder="Votre mot de passe ex: Le mot de passe">
   <span class="error"><?php if (!empty($errors['password'])) { echo $errors['password']; } ?></span>
+
+  
 
 <input type="submit" name="submitted" value="Connexion">
 </form>
