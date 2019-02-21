@@ -20,7 +20,7 @@ if(!empty($_POST['submit'])){
             $z = 'OR';        
          }
         $sql.= " AND year BETWEEN $x AND $y";
-        echo $sql;
+        //echo $sql;
         $query = $pdo->prepare($sql);
         $query->execute();
         $results = $query->fetchALL();
