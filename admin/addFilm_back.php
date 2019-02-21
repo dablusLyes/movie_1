@@ -69,7 +69,7 @@ $genres = allGenres();
 </div>
 <select name="select" class="form-control pro-edt-select form-control-primary">
 <option value="opt1">Genre</option>
-<option value="opt2"></option>
+<option value="opt2">1990</option>
 <option value="opt3">1910</option>
 <option value="opt4">1920</option>
 <option value="opt5">1930</option>
@@ -81,7 +81,7 @@ $genres = allGenres();
 <option value="opt6">1990</option>
 <option value="opt6">2000</option>
 <option value="opt6">2010</option>
-<option value="opt6">220</option>
+<option value="opt6">2020</option>
 </select>
 <div class="input-group mg-b-pro-edt">
 <span class="input-group-addon">Plot</span>
@@ -163,6 +163,7 @@ $genres = allGenres();
 </label>
 </div>
 </form>
+</div>
 </div>
 <div class="col-lg-6">
 <div class="product-edt-remove">
