@@ -1,5 +1,6 @@
 @import url(reset.css);
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
 
 body{
 	font-size: 16px;
@@ -11,18 +12,19 @@ body{
 
 .wrap{
 	width: 100%;
-	max-width: 1000px;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 
 /*============================== Header =======================================*/
 
-header h1{text-align: center; font-size: 3em; margin: 50px 0;}
+header h1{text-align: center; font-size: 5em; margin: 50px 0; font-family: 'Luckiest Guy'; color: red;}
 
 nav ul{
 	display: flex;
 	justify-content: center;
-}
+	margin-bottom: 100px;}
+
 nav ul li{ margin: 0 1%; }
 
 nav ul li a{
@@ -30,14 +32,78 @@ nav ul li a{
 	text-decoration: none;
 	font-size: 1.5em;
 	padding: 10px;
+	text-transform: uppercase;}
+
+nav ul li span{ color: yellow; }
+nav ul li p{ color: red; font-size: 1.5em; text-transform: uppercase;}
+
+nav ul li a:hover{ text-decoration: underline; }
+
+/*============================== Movies Section =======================================*/
+
+.select{ 
+	margin-bottom: 50px;
+	text-align: center;
 }
 
-nav ul li a:hover{
-	text-decoration: underline;
+#movies .movies{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	/*border: solid 1px white;*/
 }
 
+#movies .movie{
+	width: 20%;
+	text-align: center;
+	margin-bottom: 100px;
+}
 
+.img_container{ width: 100%; height: 350px;}
+.img_container img { width: 80%; margin: 0 auto; display: block; }
+.movie h2{ font-size: 1.5em; margin-bottom: 15px; padding: 0 5px;}
+.movie p:first-of-type{ margin-bottom: 5px; }
+.movie p span{ font-size: 1.3em; color: yellow;}
+.more_movies{
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	font-size: 1.3em;
+	display: block;}
+.more_movies:hover{ text-decoration: underline; }
 
 /*============================== Footer =======================================*/
 
-footer p{ text-align: center; margin: 30px 0;}
+footer p{ text-align: center; margin:200px 0 50px;}
+
+/*============================== Login / Register =======================================*/
+
+.login label, .register label{
+	display: block;
+	font-size: 1.3em;
+	text-align: center;
+	margin-bottom: 10px;}
+
+.login input, .register input{
+	display: block;
+	font-size: 1.3em;
+	text-align: center;
+	width: 50%;
+	border: none;
+	height: 40px;
+	margin: 0 auto 30px;}
+
+.login input[type=submit], .register input[type=submit]{ 
+	width: 20%;
+	font-size: 1.2em;
+	cursor: pointer;
+	height: 40px;}
+
+.login input[type=submit]:hover, .register input[type=submit]:hover{
+	background-color: red; 
+	color: white;}
+
+.login a{ color: yellow; text-align: center; display: block; margin-bottom: 50px; margin-top: -20px; }
+
+/*===================================== Register =======================================*/
+

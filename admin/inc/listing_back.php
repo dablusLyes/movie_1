@@ -1,39 +1,26 @@
 <?php
 
 function create_listingMoviesBack($movies){
-  echo '<table>';
-  echo '<tr>';
-  echo    '<td colspan = 3>Titre</td>';
-  echo    '<td colspan = 10>Contenu</td>';
-  echo    '<td colspan = 3>Auteur</td>';
-  echo    '<td colspan = 3>Date de création</td>';
-  echo    '<td colspan = 3>Update</td>';
-  echo    '<td colspan = 3>edit</td>';
-  echo    '<td colspan = 3>delete</td>';
-  echo    '<td colspan = 3>status</td>';
-  echo '</tr>';
+  foreach ($movies as $movie) {
 
-  foreach ($movis as $key => $movie) {
-    if($key % 2 == 0){
-      echo '<tr>';
-    }
-    else {
-      echo '<tr class="success">';
-    }
-
-    echo    '<td colspan = 3>'.$movie['title'].'</td>';
-    echo    '<td colspan = 10>'.substr($movie['content'], 0, 30);
-            if(strlen($article['content']) > 30) { echo '(...)';}
-    echo    '</td>';
-    echo    '<td colspan = 3>'.$article['auteur'].'</td>';
-    echo    '<td colspan = 3>'.formated_date($movie['created_at']).'</td>';
-    echo    '<td colspan = 3>';
-            if($movie['updated_at'] != NULL) { echo formated_date($movie['updated_at']); }
-    echo    '</td>';
-    echo    '<td colspan = 3><a href="edit.php?id='.$movie['id'].'"><i class="fas fa-edit"></i></a></td>';
-    echo    '<td colspan = 3><a href="delete.php?id='.$movie['id'].'"><i class="fas fa-trash"></i></a></td>';
-    echo    '<td colspan = 3><a href="delete.php?id='.$movie['id'].'">'.$movie['status'].'</i></a></td>';
-    echo '</tr>';
+    echo   '<tr>';
+    echo     '<th>'.$movie['id'].'</th>';
+    echo     '<th>'.$movie['title'].'</th>';
+    echo     '<th>'.$movie['year'].'</th>';
+    echo     '<th>'.$movie['genres'].'</th>';
+    echo     '<th>'.$movie['plot'].'</th>';
+    echo     '<th>'.$movie['directors'].'</th>';
+    echo     '<th>'.$movie['cast'].'</th>';
+    echo     '<th>'.$movie['writers'].'</th>';
+    echo     '<th>'.$movie['runtime'].'</th>';
+    echo     '<th>'.$movie['mpaa'].'</th>';
+    echo     '<th>'.$movie['rating'].'</th>';
+    echo     '<th>'.$movie['popularity'].'</th>';
+    echo     '<th>'.$movie['modified'].'</th>';
+    echo     '<th>'.$movie['created'].'</th>';
+    echo     '<th><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></th>';
+    echo     '<th><button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button></th>';
+    echo   '</tr>';
   }
   echo '</table>';
 }
