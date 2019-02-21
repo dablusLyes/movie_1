@@ -126,10 +126,21 @@ function validPassword($errors,$input,$input2,$key,$min,$max){
 
 // 									Generates a token 
 
-// Generates a token
-function generateToken($lengh){
-	$token = bin2hex(random_bytes($lengh));
-	return $token;}
+// Generates a token if you use PHP 7 :)
+
+// function generateToken($lengh){
+// 	$token = bin2hex(random_bytes($lengh));
+// 	return $token;}
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 
 // =====================================================================================//
 
