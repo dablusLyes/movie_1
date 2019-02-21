@@ -6,7 +6,7 @@ require 'pdo.php';
 
 // ===================================================================================//
 //                         Insert a new user in the database
-
+// ==================================================
 function addNewUser($pseudo,$email,$password, $token){
 	global $pdo;
 	$sql = "INSERT INTO users (pseudo,email,password,created_at,token)
@@ -22,12 +22,12 @@ function addNewUser($pseudo,$email,$password, $token){
 // ===================================================================================//
 // 							Gets 10 random movies from the DB
 
-function getRandomMovies(){
+function getRandomMovies($count = 10){
       global $pdo;
 
       $sql = "SELECT * FROM movies_full
                 ORDER BY RAND()
-                LIMIT 10 ";
+                LIMIT $count";
       $query = $pdo->prepare($sql);
       $query->execute();
 
