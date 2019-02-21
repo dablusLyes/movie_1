@@ -50,7 +50,7 @@ function getAllMovies(){
 }
 
 //======================================================================================
-//==================Displays the details of the clicked film on details.php
+//               Displays the details of the clicked film on details.php
 function getSingleFilm($slug){
   global $pdo;
 
@@ -68,13 +68,16 @@ function getSingleFilm($slug){
 //                        Checks and returns if user exists in database
 
 function getUser($login){
+  global $pdo;
 	$sql = "SELECT * FROM users
 	   		WHERE pseudo = :login
 	   		OR email = :login";
-    $query = $pdo->prepare($sql);
-    $query->bindValue(':login',$login,PDO::PARAM_STR);
-    $query->execute();
-    $user = $query->fetch();
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':login',$login,PDO::PARAM_STR);
+  $query->execute();
+  $user = $query->fetch();
+
+  return $user;
 }
 
 // ===================================================================================//
