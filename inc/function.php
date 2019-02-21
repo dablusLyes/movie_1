@@ -171,3 +171,23 @@ function isAdmin(){
 	}
 	return false;
 }
+
+/*  ==================================================================================
+
+ * 		poster()
+ * 		Set path of the poster, checks if img exists, if not => apply default poster
+ * 		@param array $movie
+ * 		@return string
+ */
+
+function poster($movie){
+
+	if (file_exists('posters/'. $movie['id'] . '.jpg')) {
+		$src = 'posters/'. $movie['id'] . '.jpg';
+	} else {
+		$src = 'assets/img/default_poster.jpg';
+	}
+	return $src;
+}
+
+		
