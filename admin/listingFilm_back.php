@@ -14,14 +14,20 @@ require '../vendor/autoload.php';
 
 use JasonGrimes\Paginator;
 
-$totalItems = 1000;
+$totalItems = countAllFilms();
 $itemsPerPage = 25;
-$currentPage = 2;
-$urlPattern = 'index.php?page=(:num)';
+$currentPage = 1;
+$offset = ($currentPage * $itemsPerPage) - $itemsPerPage;
+$urlPattern = 'listingFilm_back.php?page=(:num)';
+
+if(!empty($_GET['page']) && is_numeric($_GET['page'])){
+  $currentPage = $_GET['page'];
+  $offset = ($currentPage * $itemsPerPage) - $itemsPerPage;
+}
 
 $paginator = new Paginator($totalItems, $itemsPerPage, $currentPage, $urlPattern);
 
-$movies = getAllMoviesLimitBy();
+$movies = getAllMoviesLimitBy($offset);
 
 ?>
 

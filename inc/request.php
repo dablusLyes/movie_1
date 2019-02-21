@@ -37,12 +37,13 @@ function getRandomMovies($count = 10){
 // ===================================================================================//
 // 							Get allartikal get all movies from DB limit by 25
 
-function getAllMoviesLimitBy($limit = 25){
+function getAllMoviesLimitBy($offset, $limit = 25){
       global $pdo;
 
       $sql = "SELECT * FROM movies_full
-                ORDER BY id ASC
-                LIMIT $limit";
+                ORDER BY id
+                LIMIT $limit OFFSET $offset";
+
       $query = $pdo->prepare($sql);
       $query->execute();
 
@@ -81,4 +82,15 @@ function getUser($login){
 }
 
 // ===================================================================================//
-//
+//												return number total films number
+
+function countAllFilms(){
+  global $pdo;
+	$sql = "SELECT COUNT(id) FROM movies_full";
+
+  $query = $pdo->prepare($sql);
+  $query->execute();
+;
+
+  return $query->fetchColumn();
+}
