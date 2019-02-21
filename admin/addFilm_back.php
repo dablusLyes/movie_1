@@ -7,6 +7,11 @@
 <?php include('inc/mobileMenu_back.php'); ?>
 <?php include('inc/headerBar_back.php'); ?>
 
+<?php
+
+$genres = allGenres();
+
+?>
 
 <div class="breadcome-area">
 <div class="container-fluid">
@@ -55,23 +60,35 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 <div class="review-content-section">
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+<span class="input-group-addon">Title</span>
 <input type="text" class="form-control" >
 </div>
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-<input type="text" class="form-control" >
+<span class="input-group-addon">Year</span>
+<input type="text" class="form-control">
 </div>
+<select name="select" class="form-control pro-edt-select form-control-primary">
+<option value="opt1">Genre</option>
+<option value="opt2">1990</option>
+<option value="opt3">1910</option>
+<option value="opt4">1920</option>
+<option value="opt5">1930</option>
+<option value="opt6">1940</option>
+<option value="opt6">1950</option>
+<option value="opt6">1960</option>
+<option value="opt6">1970</option>
+<option value="opt6">1980</option>
+<option value="opt6">1990</option>
+<option value="opt6">2000</option>
+<option value="opt6">2010</option>
+<option value="opt6">2020</option>
+</select>
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+<span class="input-group-addon">Plot</span>
 <input type="text" class="form-control">
 </div>
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
-<input type="text" class="form-control">
-</div>
-<div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
+<span class="input-group-addon">Directors</span>
 <input type="text" class="form-control">
 </div>
 </div>
@@ -79,29 +96,21 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 <div class="review-content-section">
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+<span class="input-group-addon">Cast</span>
  <input type="text" class="form-control">
 </div>
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="icon nalika-favorites-button" aria-hidden="true"></i></span>
+<span class="input-group-addon">Writers</i></span>
 <input type="text" class="form-control">
 </div>
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+<span class="input-group-addon">Runtime</span>
 <input type="text" class="form-control">
 </div>
 <div class="input-group mg-b-pro-edt">
-<span class="input-group-addon"><i class="icon nalika-like" aria-hidden="true"></i></span>
+<span class="input-group-addon">MPAA</span>
 <input type="text" class="form-control">
 </div>
-<select name="select" class="form-control pro-edt-select form-control-primary">
-<option value="opt1">Select One Value Only</option>
-<option value="opt2">2</option>
-<option value="opt3">3</option>
-<option value="opt4">4</option>
-<option value="opt5">5</option>
-<option value="opt6">6</option>
-</select>
 </div>
 </div>
 </div>
