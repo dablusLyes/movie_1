@@ -14,9 +14,10 @@ require '../vendor/autoload.php';
 
 use JasonGrimes\Paginator;
 
-$totalItems = 1000;
+$totalItems = countAllFilms();
 $itemsPerPage = 25;
-$currentPage = 2;
+$offest 
+$currentPage = 1;
 $urlPattern = 'index.php?page=(:num)';
 
 $paginator = new Paginator($totalItems, $itemsPerPage, $currentPage, $urlPattern);
