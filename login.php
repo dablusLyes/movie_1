@@ -22,7 +22,11 @@ if (!empty($_POST['submitted'])) {
 
     if (!empty($user)) {
       if (password_verify($password,$user['password'])) {
+
+        // checkbox
+    
         // Everything's right => feed the Session with user info
+
         $_SESSION['user'] = array(
           'id' => $user['id'],
           'email' => $user['email'],
@@ -53,9 +57,16 @@ if (!empty($_POST['submitted'])) {
   <input type="password" id="password" name="password" value="" placeholder="Password">
   <a href="forgetpassword.php">Reset password</a>
   <span class="error"><?php if (!empty($errors['password'])) { echo $errors['password']; } ?></span>
+  <br>
+  <input type="checkbox" name="rememberme" id="rememberme">
+  <label for="rememberme">se souvenir de moi</label>
 
 <input type="submit" name="submitted" value="Log in">
+
+
 </form>
+
+
 
 
 
