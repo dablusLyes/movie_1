@@ -6,7 +6,7 @@ require 'pdo.php';
 
 // ===================================================================================//
 //                         Insert a new user in the database
-
+// ==================================================
 function addNewUser($pseudo,$email,$password, $token){
 	global $pdo;
 	$sql = "INSERT INTO users (pseudo,email,password,created_at,token)
@@ -22,12 +22,12 @@ function addNewUser($pseudo,$email,$password, $token){
 // ===================================================================================//
 // 							Gets 10 random movies from the DB
 
-function getRandomMovies(){
+function getRandomMovies($count = 10){
       global $pdo;
 
       $sql = "SELECT * FROM movies_full
                 ORDER BY RAND()
-                LIMIT 10 ";
+                LIMIT $count";
       $query = $pdo->prepare($sql);
       $query->execute();
 
@@ -50,7 +50,7 @@ function getAllMovies(){
 }
 
 //======================================================================================
-//==================Displays the details of the clicked film on details.php
+//               Displays the details of the clicked film on details.php
 function getSingleFilm($slug){
   global $pdo;
 
@@ -68,13 +68,16 @@ function getSingleFilm($slug){
 //                        Checks and returns if user exists in database
 
 function getUser($login){
+  global $pdo;
 	$sql = "SELECT * FROM users
 	   		WHERE pseudo = :login
 	   		OR email = :login";
-    $query = $pdo->prepare($sql);
-    $query->bindValue(':login',$login,PDO::PARAM_STR);
-    $query->execute();
-    $user = $query->fetch();
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':login',$login,PDO::PARAM_STR);
+  $query->execute();
+  $user = $query->fetch();
+
+  return $user;
 }
 
 // ===================================================================================//
