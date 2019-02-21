@@ -23,8 +23,8 @@ if (!empty($_POST['submitted'])) {
 	if (count($errors) == 0) {
 
 		$password = hashPassword($password); // Hash the user password
-		$token = generateToken(20); // generates a token ( paramater = token lengh (not char lengh tho) )
-
+		// $token = generateToken(20); // generates a token ( paramater = token lengh (not char lengh tho) )
+		$token = generateRandomString(30);
 		// Insert a new user in database
 		addNewUser($pseudo,$email,$password,$token);
 
