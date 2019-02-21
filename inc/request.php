@@ -94,3 +94,17 @@ function countAllFilms(){
 
   return $query->fetchColumn();
 }
+
+// ===================================================================================//
+//		                   return all films genres
+
+function allGenres(){
+  global $pdo;
+	$sql = "SELECT DISTINCT genres FROM `movies_full` WHERE 1";
+
+  $query = $pdo->prepare($sql);
+  $query->execute();
+;
+
+  return $query->fetchColumn();
+}
