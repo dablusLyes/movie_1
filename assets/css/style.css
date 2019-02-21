@@ -54,7 +54,7 @@ nav ul li a:hover{ text-decoration: underline; }
 }
 
 #movies .movie{
-	width: 20%;
+	flex-basis: 20%;
 	text-align: center;
 	margin-bottom: 100px;
 }
@@ -109,6 +109,37 @@ footer p{ text-align: center; margin:200px 0 50px;}
 
 .details{
 	display: flex;
+	justify-content: space-between;
 }
-.details ul{ flex-grow: 3; }
-.details .img_container img{ width: 100%; }
+.details ul{ flex-basis: 70%; }
+.details .img_container img{ width: 100%;;}
+.details .img_container{ flex-basis: 25%; }
+
+.details h2{ font-size: 2.2em; text-align: center; margin-bottom: 10px; }
+.details .released{ text-align: center; color: yellow; margin-bottom: 5px;}
+.details .plot{ font-size: 1.4em; margin-bottom: 20px; text-align: justify; }
+.details .genre{ text-align: center; margin-bottom: 30px; color: red;}
+.details .movie_details{ color: yellow; margin-bottom: 5px;}
+.details span{ color: white;}
+
+.retour{ text-align: center; color: white; display: block; font-size: 1.3em; text-decoration: none;}
+.retour:hover{ text-decoration: underline; }
+
+/*===================================== Reset Password =======================================*/
+
+h1.reset { font-size: 1.8em; text-align: center; margin-bottom: 30px; }
+form.reset label{ display: block; text-align: center; font-size: 1.2em; margin-bottom: 10px; color: yellow;}
+
+form.reset input{
+	background-color: white;
+	color: black;
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	height: 40px;
+	text-align: center;
+	font-size: 1.3em;}
+
+form.reset input[type=submit]{ background-color: white; width: 20%; cursor: pointer; font-size: 1.3em;}
+form.reset input[type=submit]:hover{ background-color: red; color: white; }
