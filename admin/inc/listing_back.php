@@ -1,9 +1,9 @@
 <?php
 
 function create_listingMoviesBack($movies){
-  foreach ($movis as $movie) {
+  foreach ($movies as $movie) {
 
-    echo    '<tr>';
+    echo   '<tr>';
     echo     '<th>'.$movie['id'].'</th>';
     echo     '<th>'.$movie['title'].'</th>';
     echo     '<th>'.$movie['year'].'</th>';
@@ -16,12 +16,10 @@ function create_listingMoviesBack($movies){
     echo     '<th>'.$movie['mpaa'].'</th>';
     echo     '<th>'.$movie['rating'].'</th>';
     echo     '<th>'.$movie['popularity'].'</th>';
-    echo     '<th>'.$movie['modifed'].'</th>';
+    echo     '<th>'.$movie['modified'].'</th>';
     echo     '<th>'.$movie['created'].'</th>';
-    echo     '<th>';
-    echo       '<button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>';
-    echo       '<button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
-    echo     '</th>';
+    echo     '<th><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></th>';
+    echo     '<th><button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button></th>';
     echo   '</tr>';
   }
   echo '</table>';
