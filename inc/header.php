@@ -22,16 +22,16 @@
 						echo '<li><a href="login.php">Login</a></li>';
 					} else {
 						echo '<li><a href="logout.php">Logout</a></li>';
-						echo '<li><p>Bonjour <span>' . $_SESSION['user']['pseudo'] . '</span></p></li>';
+						echo '<li><p>Bonjour <span> ' . $_SESSION['user']['pseudo'] . '</span></p></li>';
 					}
 
 					if (isAdmin()) {
-						echo '<li><a href="admin/index.php">Back office</a></li>';
+						echo '<li><a href="admin/index.php">Admin</a></li>';
 					} ?>	
 				</ul>
 			</nav>
 		</header>
-     	<section id="section">
+     	<section id="movies">
 
      		<div class="wrap">
 

@@ -8,7 +8,7 @@ $films = getRandomMovies();
 
 include('inc/header.php'); ?>
 
-<form action="search.php" method="post">
+<form class="select" action="search.php" method="post">
     
     <label for="genre-select">select a genre</label>
 
@@ -56,17 +56,18 @@ include('inc/header.php'); ?>
     </select>
 </form>
 
-<?php foreach($films as $film){ ?>
-<ul>
-    <a href="details.php?slug=<?php echo $film['slug']; ?>"> <img src="<?php echo poster($film); ?>" alt="<?php echo $film['title'] ?>"></a>
-    <p> <?php echo $film['title'] ?> </p>
-    <p> year of sortie<?php echo $film['year'] ?> </p>
-    <p> rating : <?php echo $film['rating'] ?>/100</p>
-</ul>
-<?php 
-}
-?>
-<a href="">Plus de films !</a>
+<div class="movies">
+	<?php foreach($films as $film){ ?>
+		<ul class="movie">
+		    <a href="details.php?slug=<?php echo $film['slug']; ?>"> <div class="img_container"><img src="<?php echo poster($film); ?>" alt="<?php echo $film['title'] ?>"></div></a>
+		    <h2> <?php echo $film['title'] ?> </h2>
+		    <p> Release : <span><?php echo $film['year'] ?> </span></p>
+		    <p> rating : <span><?php echo $film['rating'] ?>/100</span></p>
+		</ul>
+	<?php 
+} ?>
+</div>
+<a class="more_movies" href="">More Movies</a>
 
 
 <?php

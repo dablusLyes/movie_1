@@ -38,7 +38,7 @@ include('inc/header.php');
 ?>
 
 <!-- sign up Form -->
-<form id="register_form" action="" method="post">
+<form class="register" action="" method="post">
 
 	<label for="pseudo">Pseudo</label>
 	<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
