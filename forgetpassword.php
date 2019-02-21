@@ -31,14 +31,13 @@ if (!empty($_POST['submitted'])) {
 ?>
 <?php include('inc/header.php'); ?>
 
-<h1> ici vous-pouvez reinitialiser le mot de passe de votre session</h1>
-<form action="" method="post">
-  <label for="email"> Votre adresse Email *</label>
+<h1 class="reset"> Reset Password</h1>
+<form class="reset" action="" method="post">
+  <label for="email"> Enter your email to get a reset link :</label>
   <input type="text" name="email" id="email" value="<?php if (!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="ex: michel@gmail.com">
-  <span class="error" style="color:red"><?php if (!empty($errors['email'])) { echo $errors['email']; } ?></span>
+  <span class="error reset" style="color:red"><?php if (!empty($errors['email'])) { echo $errors['email']; } ?></span>
 
-
-  <input type="submit" name="submitted" value="Envoyez">
+  <input type="submit" name="submitted" value="Send">
 </form>
 
 
