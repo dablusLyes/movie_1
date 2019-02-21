@@ -16,19 +16,18 @@ use JasonGrimes\Paginator;
 
 $totalItems = countAllFilms();
 $itemsPerPage = 25;
-$offset = ($currentPage * $itemsPerPage) - $itemsPerPage;
 $currentPage = 1;
-$urlPattern = 'index.php?page=(:num)';
+$offset = ($currentPage * $itemsPerPage) - $itemsPerPage;
+$urlPattern = 'listingFilm_back.php?page=(:num)';
 
 if(!empty($_GET['page']) && is_numeric($_GET['page'])){
   $currentPage = $_GET['page'];
-
-
+  $offset = ($currentPage * $itemsPerPage) - $itemsPerPage;
 }
 
 $paginator = new Paginator($totalItems, $itemsPerPage, $currentPage, $urlPattern);
 
-$movies = getAllMoviesLimitBy($offest);
+$movies = getAllMoviesLimitBy($offset);
 
 ?>
 

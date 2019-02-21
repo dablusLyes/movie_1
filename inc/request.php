@@ -41,9 +41,9 @@ function getAllMoviesLimitBy($offset, $limit = 25){
       global $pdo;
 
       $sql = "SELECT * FROM movies_full
-                ORDER BY id ASC
-								OFFSET $offest
-                LIMIT $limit";
+                ORDER BY id
+                LIMIT $limit OFFSET $offset";
+
       $query = $pdo->prepare($sql);
       $query->execute();
 
