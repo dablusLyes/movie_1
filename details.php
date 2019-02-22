@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('inc/function.php');
 include('inc/pdo.php');
 include('inc/request.php');
@@ -6,16 +7,15 @@ include('inc/request.php');
 include('inc/header.php');
 
 if(!empty($_GET['slug'])){
-    $slug = $_GET['slug'];
+  $slug = $_GET['slug'];
+  $film = getSingleFilm($slug);
+  $user = $_SESSION['user']['id'];
+  $movieid = $film['id'];
 
-   $film = getSingleFilm($slug);
-
-   if(!empty($film)) {
-
-   } else {
+  if(!empty($film)) {
+  } else {
      die('404');
-   }
-
+  }
 }else{
     die('404');
 }
@@ -33,9 +33,24 @@ if(!empty($_GET['slug'])){
       <li><p class="movie_details"> Casting : <span><?php echo $film['cast'] ?> </span></p></li>
       <li><p class="movie_details"> Writers : <span><?php echo $film['writers'] ?> </span></p></li>
       <li><p class="movie_details"> Popularity : <span><?php echo $film['popularity'] ?> </span></p></li>
+      <?php if (isLogged()) { 
+        if (empty(checkList($movieid, $user))) { ?>
+            <form class="addtolist" action="addtolist.php" method="post">
+              <input type="hidden" name="movie" value="<?php echo $film['id'] ?>">
+              <input type="submit" name="submitted" value="Add to list">
+            </form>
+        <?php } else { ?>
+          <form class="removefromlist" action="removefromlist.php" method="post">
+              <input type="hidden" name="movie" value="<?php echo $film['id'] ?>">
+              <input type="submit" name="submitted" value="Remove from list">
+            </form>
+        <?php }
+      } ?>
+      
   </ul>
 </div>
 
-<a class="retour" href="index.php">Retour</a>
+<a class="retour" href="index.php">Go back</a>
+
 <?php
 include('inc/footer.php');

@@ -104,7 +104,50 @@ function allGenres(){
 
   $query = $pdo->prepare($sql);
   $query->execute();
-;
-
   return $query->fetchColumn();
+}
+
+// ===================================================================================//
+//                       Add a film to must see list
+
+function addToList($movie,$user){
+  global $pdo;
+  $sql = "INSERT INTO movie_user_note (movie_id,user_id,created_at,note)
+          VALUES (:movie,:user,NOW(),NULL)";
+
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':movie',$movie, PDO::PARAM_INT);
+  $query->bindValue(':user',$user, PDO::PARAM_INT);
+  $query->execute();
+}
+
+// ===================================================================================//
+//                       check if a film  is already in  must see list
+
+function checkList($movie,$user){
+  global $pdo;
+  $sql = "SELECT * FROM movie_user_note
+          WHERE movie_id = :movie
+          AND user_id = :user";
+
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':movie',$movie, PDO::PARAM_INT);
+  $query->bindValue(':user',$user, PDO::PARAM_INT);
+  $query->execute();
+  return $query->fetchAll();
+}
+
+// ===================================================================================//
+//                       remove a film from must see list
+  
+function removeFromList($movie,$user){
+  global $pdo;
+  $sql = "DELETE FROM movie_user_note
+          WHERE movie_id = :movie
+          AND user_id = :user";
+
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':movie',$movie, PDO::PARAM_INT);
+  $query->bindValue(':user',$user, PDO::PARAM_INT);
+  $query->execute();
 }

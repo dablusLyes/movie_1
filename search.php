@@ -6,31 +6,41 @@ include('inc/request.php');
 
 
 
-$x = $_POST['year'];
-$y = $_POST['year2'];
-$note0 = $_POST['note']-5;
-$note1 = $_POST['note']+5;
-$sql = "SELECT * FROM movies_full WHERE 1 = 1";
-$z = "AND";
+
 if(!empty($_POST['submit'])){
-    if(!empty($_POST['genre'])){
-        $check = $_POST['genre'];
-        //debug($check);
+        $recherche = trim(strip_tags($_POST['recherche'])); 
+        $x         = trim(strip_tags($_POST['year']));
+        $y         = trim(strip_tags( $_POST['year2']));
+        $sql       = "SELECT * FROM movies_full WHERE 1 = 1";
+        $z         = "AND";
+        
+        if(!empty($_POST['genre'])){
+        $check = trim(strip_tags($_POST['genre']));
+        //      debug($check);
         foreach ($check as $b) {
             $sql.= ' '.$z ." genres LIKE '%".$b."%' ";
-            //echo $sql;   
-            $z = 'OR';        
-         }
-        $sql.= " AND year BETWEEN $x AND $y";
-        $sql.= " AND rating BETWEEN $note0 AND $note1";
-        echo $sql;
+            $z   = 'OR';        
+        }
+    }
+
+    $sql.= " AND year   BETWEEN $x    AND $y";
+        
+    if(!empty($note)){
+        $note      = trim(strip_tags($_POST['note']));
+        $note2= trim(strip_tags($_POST['note']+10));
+        $sql.= " AND rating BETWEEN $note AND $note2" ;
+    }
+
+    if(!empty($recherche)){
+        $sql.= " AND title LIKE :src OR directors LIKE :src OR casting LIKE :src";
+    }
+
+//      echo $sql;
         $query = $pdo->prepare($sql);
+        $query->bindvalue(':src', '%'.$recherche.'%',PDO::PARAM_STR);
         $query->execute();
         $results = $query->fetchALL();
-        //debug($results);
-
-
-    }else{ header('Location: index.php');}
+//      debug($results);
 }else{header('Location: index.php');}
 
 include('inc/header.php');
