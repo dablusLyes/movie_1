@@ -25,6 +25,7 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="icon nalika-pie-chart icon-wrap"></i> <span class="mini-click-non">Miscellaneous</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
+                                <li><a href="stats.php">statistics</a></li>
                             </ul>
                         </li>
                         <li>

@@ -34,7 +34,6 @@ if(!empty($_POST['submit'])){
     if(!empty($recherche)){
         $sql.= " AND title LIKE :src OR directors LIKE :src OR casting LIKE :src";
     }
-
 //      echo $sql;
         $query = $pdo->prepare($sql);
         $query->bindvalue(':src', '%'.$recherche.'%',PDO::PARAM_STR);
