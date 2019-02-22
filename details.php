@@ -3,13 +3,14 @@ session_start();
 include('inc/function.php');
 include('inc/pdo.php');
 include('inc/request.php');
-
 include('inc/header.php');
+if (isLogged()) {
+   $user = $_SESSION['user']['id'];
+}
 
 if(!empty($_GET['slug'])){
   $slug = $_GET['slug'];
   $film = getSingleFilm($slug);
-  $user = $_SESSION['user']['id'];
   $movieid = $film['id'];
 
   if(!empty($film)) {

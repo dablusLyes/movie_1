@@ -18,7 +18,7 @@ if (!empty($_POST['submitted'])) {
   if (count($errors) == 0) {
 
     $user = getUser($login); // checking if user exist in database
-    debug($user);
+    // debug($user);
 
     if (!empty($user)) {
       if (password_verify($password,$user['password'])) {

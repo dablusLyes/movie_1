@@ -8,63 +8,85 @@ $films = getRandomMovies();
 
 include('inc/header.php'); ?>
 
-<form class="select" action="search.php" method="post">
+
+<div class="toggle">Filters</div>
+<form id="search_form" class="select" action="search.php" method="post">
     
-    <label for="genre-select">select a genre</label>
-
-    <input type="checkbox" value="drama" name="genre[]">
-    <label for="drama">drama</label>
-
-    <input type="checkbox" value="fantasy" name="genre[]">
-    <label for="fantasy">fantasy</label>
-
-    <input type="checkbox" value="romance" name="genre[]">
-    <label for="romance">romance</label>
-
-    <input type="checkbox" value="Action" name="genre[]">
-    <label for="Action">Action</label>
-
-    <input type="checkbox" value="Thriller" name="genre[]">
-    <label for="Thriller">Thriller</label>
-
-    <input type="checkbox" value="Animation" name="genre[]" >
-    <label for="Animation">Animation</label>
-    <br>
-
-    <input type="checkbox" value="comedy" name="genre[]">
-    <label for="comedy">comedy</label>
-
-    <input type="checkbox" value="Mystery" name="genre[]">
-    <label for="Mystery">Mystery</label>
-
-    <input type="checkbox" value="Crime" name="genre[]">
-    <label for="Crime">Crime</label>
-
-    <input type="checkbox" value="sci-fi" name="genre[]">
-    <label for="sci-fi">sci-fi</label>
-
-    <input type="checkbox" value="Biography" name="genre[]">
-    <label for="Biography">Biography</label>
-
-    <label for="year">Release date between</label>
-    <select name="year" id="year">
-    <?php for ($i = 1900; $i < 2020; $i+=10) { ?><option value="<?php echo $i; ?>"><?php echo $i; ?></option><?php }  ?>
-    </select>
-
-    <label for="year2">and</label>
-    <select name="year2" id="year">
-    <?php for ($i = 1900; $i <= 2020; $i+=10) { ?><option selected="selected" value="<?php echo $i; ?>"><?php echo $i; ?></option><?php }  ?>
-    </select>
-  
-    <label for="note">Rated between: </label>
-    <select name="note" id="note">
-        <option value="">note</option>
-        <?php for ($i = 0; $i <= 90; $i+=10) { ?><option value="<?php echo $i; ?>"><?php echo $i.'-'.( $i+10) ; ?></option><?php }  ?>
-    </select>
-    <label for="recherche">recherche de film</label>
-    <input name="recherche" type="search" placeholder="titre, actors ou réalisateurs">
+    <p class="genre">Select genre</p>
     
-    <input type="submit" name="submit" value="search">
+    <div class="checkboxes">
+        <div class="checkbox">
+            <input type="checkbox" value="drama" name="genre[]">
+            <label for="drama">drama</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="fantasy" name="genre[]">
+            <label for="fantasy">fantasy</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="romance" name="genre[]">
+            <label for="romance">romance</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="Action" name="genre[]">
+            <label for="Action">Action</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="Thriller" name="genre[]">
+            <label for="Thriller">Thriller</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="Animation" name="genre[]" >
+            <label for="Animation">Animation</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="comedy" name="genre[]">
+            <label for="comedy">comedy</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="Mystery" name="genre[]">
+            <label for="Mystery">Mystery</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="Crime" name="genre[]">
+            <label for="Crime">Crime</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="sci-fi" name="genre[]">
+            <label for="sci-fi">sci-fi</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" value="Biography" name="genre[]">
+            <label for="Biography">Biography</label>
+        </div>
+    </div>
+    <p>Select release date and rating</p>
+    <div class="selects">
+        <div class="select">
+            <label for="year">Released between</label>
+            <select name="year" id="year">
+            <?php for ($i = 1900; $i < 2020; $i+=10) { ?><option value="<?php echo $i; ?>"><?php echo $i; ?></option><?php } ?>
+            </select>
+
+            <label for="year2">and</label>
+            <select name="year2" id="year">
+            <?php for ($i = 1900; $i <= 2020; $i+=10) { ?><option selected="selected" value="<?php echo $i; ?>"><?php echo $i; ?></option><?php }  ?>
+            </select>
+        </div>
+      
+        <div class="select">
+        <label for="note">Rating : </label>
+        <select name="note" id="note">
+            <option value="">note</option>
+            <?php for ($i = 0; $i <= 90; $i+=10) { ?><option value="<?php echo $i; ?>"><?php echo $i.'-'.( $i+10) ; ?></option><?php }  ?>
+        </select>
+        </div>
+    </div>
+    <p>Custom search</p>
+    <div class="custom_search">
+        <input name="recherche" type="search" placeholder="titre, actors ou réalisateurs">
+        <input type="submit" name="submit" value="search">
+    </div>
 </form>
 
 
