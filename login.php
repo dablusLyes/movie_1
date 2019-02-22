@@ -15,37 +15,41 @@ if (!empty($_POST['submitted'])) {
   if (empty($login) OR empty($password)) {
     $errors['login'] = 'Veuillez renseignez les deux champs pour vous connectez';
   }
+
   if (count($errors) == 0) {
 
     $user = getUser($login); // checking if user exist in database
     debug($user);
+    // checkbox
+         if (!empty($user)) {
+           if (password_verify($password,$user['password'])) {
+                //setcookie('users_id', $users->id, time() + 3600 * 24 * 3 '/', 'localhost');
 
-    if (!empty($user)) {
-      if (password_verify($password,$user['password'])) {
 
-        // checkbox
-    // 157 div fermante
-        // Everything's right => feed the Session with user info
 
-        $_SESSION['user'] = array(
-          'id' => $user['id'],
-          'email' => $user['email'],
-          'pseudo' => $user['pseudo'],
-          'role' => $user['role'],
-          'ip' => $_SERVER['REMOTE_ADDR']
-        );
-        header('Location: index.php');
-        exit;
 
-      } else {
-        $errors['login'] = 'Login and password do not match';
-      }
+              // Everything's right => feed the Session with user info
+
+              $_SESSION['user'] = array(
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'pseudo' => $user['pseudo'],
+                'role' => $user['role'],
+                'ip' => $_SERVER['REMOTE_ADDR']
+              );
+              header('Location: index.php');
+              exit;
+
+            } else {
+              $errors['login'] = 'Login and password do not match';
+            }
+        }
     } else {
       $errors['login'] = 'Unknown user';
     }
-  }
-}
 
+
+}
  include('inc/header.php'); ?>
 
 <form class="login" action="" method="post">
@@ -61,7 +65,7 @@ if (!empty($_POST['submitted'])) {
   <input type="checkbox" name="rememberme" id="rememberme">
   <label class="remember" for="rememberme">Se souvenir de moi</label>
 
-  
+
 
 <input type="submit" name="submitted" value="Log in">
 
