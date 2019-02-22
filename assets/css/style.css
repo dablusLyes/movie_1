@@ -50,7 +50,6 @@ nav ul li a:hover{ text-decoration: underline; }
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	/*border: solid 1px white;*/
 }
 
 #movies .movie{
@@ -111,6 +110,7 @@ footer p{ text-align: center; margin:200px 0 50px;}
 /*===================================== Details.php =======================================*/
 
 .details{
+	height: 400px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -127,6 +127,29 @@ footer p{ text-align: center; margin:200px 0 50px;}
 
 .retour{ text-align: center; color: white; display: block; font-size: 1.3em; text-decoration: none;}
 .retour:hover{ text-decoration: underline; }
+.mustsee{ 
+	color: white;
+	text-decoration: none;
+	width: 100%;
+	text-align: center;
+	display: block;
+	margin: 10px 0 5px;}
+	
+i{ font-size: 2em; color: white; width: 100%; text-align: center; }
+
+.addtolist input[type=submit], .removefromlist input[type=submit]{
+	display: block;
+	margin: 0 auto;
+	width: auto;
+	height: 30px;
+	font-size: 1em;
+	background-color: inherit;
+	color: yellow;
+	cursor: pointer;
+	text-transform: uppercase;}
+
+.addtolist input[type=submit]:hover, .removefromlist input[type=submit]:hover{
+	text-decoration: underline;}
 
 /*===================================== Reset Password =======================================*/
 
