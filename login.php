@@ -24,7 +24,7 @@ if (!empty($_POST['submitted'])) {
       if (password_verify($password,$user['password'])) {
 
         // checkbox
-    
+    // 157 div fermante
         // Everything's right => feed the Session with user info
 
         $_SESSION['user'] = array(

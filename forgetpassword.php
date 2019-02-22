@@ -19,9 +19,12 @@ if (!empty($_POST['submitted'])) {
     if (!empty($user)) {
       $tokenEncode = urlencode($user['token']);
       $emailEncode = urlencode($user['email']);
-      $url = '' . $emailEncode . '&token=' . $tokenEncode;
+      $url = 'modifiedpassword.php?' . $emailEncode . '&token=' . $tokenEncode;
       $html = '<p>Veuillez cliquer sur le lien ci-dessous pour reinitialiser le mot de passe de votre session</p>';
-      $html .= '<p><a href="'.$url.'">Cliquer ici pour modifier ton mot de passe</a></p>';
+      $html = '<p><a href="'.$url.'">Cliquer ici pour modifier le mot de passe</a></p>';
+      echo $html;
+           die();
+
     }else {
       $errors['email'] = 'votre adresse mail est  incorrect';
     }
