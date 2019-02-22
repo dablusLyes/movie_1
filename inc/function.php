@@ -13,7 +13,7 @@ function abort404(){ header('location: 404.php'); exit(); }
 function abort403(){ header('location: 403.php'); exit(); }
 
 
-// =====================================================================================//		
+// =====================================================================================//
 /*
  * isInteger()
  * Checks and returns if input is numeric and integer
@@ -48,6 +48,22 @@ function validTextInput($errors,$input,$key,$min,$max){
 		$errors[$key] = 'Veuillez renseigner ce champs';
 	}
 	return $errors;}
+
+	// =====================================================================================//
+	// 								Number input validation
+
+function validNumInput($errors,$input,$key,$min,$max){
+
+	if (!empty($input)) {
+		if ($input < $min) {
+			$errors[$key] = 'Veuillez renseigner un nombre supérieur à ' . $min . '.';
+		} elseif($input > $max) {
+			$errors[$key] = 'Veuillez renseigner un nombre inférieure à' . $max . '.';
+		}
+	} else {
+		$errors[$key] = 'Veuillez renseigner ce champs';
+	}
+return $errors;}
 
 // =====================================================================================//
 // 						Input validation for pseudo (requires pdo)
@@ -124,7 +140,7 @@ function validPassword($errors,$input,$input2,$key,$min,$max){
 
 // =====================================================================================//
 
-// 									Generates a token 
+// 									Generates a token
 
 // Generates a token if you use PHP 7 :)
 
@@ -144,7 +160,7 @@ function generateRandomString($length = 10) {
 
 // =====================================================================================//
 
-//									 Hash a password 
+//									 Hash a password
 function hashPassword($password){
 	$password = password_hash($password , PASSWORD_DEFAULT);
 	return $password;}
@@ -200,5 +216,3 @@ function poster($movie){
 	}
 	return $src;
 }
-
-		
