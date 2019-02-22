@@ -55,11 +55,18 @@ include('inc/header.php'); ?>
     <select name="year2" id="year">
     <?php for ($i = 1900; $i <= 2020; $i+=10) { ?><option selected="selected" value="<?php echo $i; ?>"><?php echo $i; ?></option><?php }  ?>
     </select>
-    <label for="note">with a note of</label>
-    <input type="number" name ="note">
-
+  
+    <label for="note">Rated between: </label>
+    <select name="note" id="note">
+        <option value="">note</option>
+        <?php for ($i = 0; $i <= 90; $i+=10) { ?><option value="<?php echo $i; ?>"><?php echo $i.'-'.( $i+10) ; ?></option><?php }  ?>
+    </select>
+    <label for="recherche">recherche de film</label>
+    <input name="recherche" type="search" placeholder="titre, actors ou réalisateurs">
+    
     <input type="submit" name="submit" value="search">
 </form>
+
 
 <div class="movies">
 	<?php foreach($films as $film){ ?>

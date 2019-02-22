@@ -104,8 +104,6 @@ function allGenres(){
 
   $query = $pdo->prepare($sql);
   $query->execute();
-;
-
   return $query->fetchColumn();
 }
 
