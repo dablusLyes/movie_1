@@ -77,14 +77,10 @@ $movies = getAllMoviesLimitBy($offset);
         <th>Title</th>
         <th>Years</th>
         <th>Genre</th>
-        <th>Plot</th>
         <th>Directors</th>
         <th>Cast</th>
         <th>Writers</th>
-        <th>Runtime</th>
-        <th>MPAA</th>
         <th>Rating</th>
-        <th>Popularity</th>
         <th>Modification date</th>
         <th>Created date</th>
         <th>Edit</th>
