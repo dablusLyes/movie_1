@@ -54,6 +54,7 @@ nav ul li a:hover{ text-decoration: underline; }
 .checkboxes{ display: flex; justify-content: space-around; margin-bottom: 10px;}
 .selects{ display: flex; justify-content:space-around; }
 .select{ margin: 5px 0; }
+.custom_search{ margin: 0 auto; width: 20%;}
 #movies .movies{
 	display: flex;
 	flex-wrap: wrap;
