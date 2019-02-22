@@ -139,7 +139,7 @@ function checkList($movie,$user){
 
 // ===================================================================================//
 //                       remove a film from must see list
-  
+
 function removeFromList($movie,$user){
   global $pdo;
   $sql = "DELETE FROM movie_user_note

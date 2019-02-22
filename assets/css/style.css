@@ -41,16 +41,24 @@ nav ul li a:hover{ text-decoration: underline; }
 
 /*============================== Movies Section =======================================*/
 
-.select{ 
-	margin-bottom: 50px;
-	text-align: center;
-}
+.toggle{ text-align: center; margin: 0 auto 30px; cursor: pointer; width: 10%; font-size: 1.2em; }
+.toggle:hover{ text-decoration: underline; }
 
+#search_form p{
+	margin-bottom: 5px; 
+	text-align: center;
+	background-color: rgba(255,255,255,.2);
+	color: white; height: 25px;
+	line-height: 25px;}
+
+.checkboxes{ display: flex; justify-content: space-around; margin-bottom: 10px;}
+.selects{ display: flex; justify-content:space-around; }
+.select{ margin: 5px 0; }
+.custom_search{ margin: 0 auto; width: 20%;}
 #movies .movies{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
-}
+	justify-content: space-between;}
 
 #movies .movie{
 	flex-basis: 20%;
