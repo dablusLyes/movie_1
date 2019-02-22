@@ -104,6 +104,9 @@ footer p{ text-align: center; margin:200px 0 50px;}
 	color: white;}
 
 .login a{ color: yellow; text-align: center; display: block; margin-bottom: 50px; margin-top: -20px; }
+/*
+.login label.remember{ display: inline;}
+.login input[type=checkbox]{ display: inline; }*/
 
 /*===================================== Details.php =======================================*/
 

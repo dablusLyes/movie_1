@@ -59,7 +59,9 @@ if (!empty($_POST['submitted'])) {
   <span class="error"><?php if (!empty($errors['password'])) { echo $errors['password']; } ?></span>
   <br>
   <input type="checkbox" name="rememberme" id="rememberme">
-  <label for="rememberme">se souvenir de moi</label>
+  <label class="remember" for="rememberme">Se souvenir de moi</label>
+
+  
 
 <input type="submit" name="submitted" value="Log in">
 
